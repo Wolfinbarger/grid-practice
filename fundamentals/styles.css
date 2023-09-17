@@ -7,10 +7,14 @@ body {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 300px 300px 300px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 100px 200px 300px;
+  gap: 10px;
   background-color: lightgray;
   max-width: 900px;
   margin: 0 auto;
+  justify-items: stretch;
+  align-items: stretch;
 }
 
 .grid-container > div {
@@ -18,4 +22,34 @@ body {
   text-align: center;
   padding: 20px;
   border: 1px solid #777;
+}
+
+.grid-container > div:nth-child(1) {
+  grid-column: 1 / span 2;
+}
+
+/* without first number start at next available position */
+.grid-container > div:nth-child(2) {
+  grid-column: span 3;
+}
+
+/* span 1 is default behaviour */
+.grid-container > div:nth-child(3) {
+  grid-column: span 1;
+}
+
+/* second number tells where to end */
+.grid-container > div:nth-child(4) {
+  grid-column: 2 / 6;
+  align-self: end;
+}
+
+.grid-container > div:nth-child(5) {
+  grid-column: span 3;
+}
+
+.grid-container > div:nth-child(6) {
+  grid-column: span 3;
+  justify-self: end;
+  align-self: start;
 }
